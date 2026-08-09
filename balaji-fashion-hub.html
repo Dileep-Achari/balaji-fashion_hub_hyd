@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Balaji Fashion Hub — Ameerpet, Hyderabad</title>
+<meta name="description" content="Balaji Fashion Hub, Ameerpet — clothing store on Balkampet Road, Hyderabad. 4.9 rated, open till 11:30 PM.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Work+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --canvas:#EFE7D2;
+    --canvas-2:#E5DABC;
+    --card:#F7F2E4;
+    --ink:#1C1B17;
+    --ink-soft:#4A473D;
+    --cobalt:#2D4373;
+    --mustard:#E0A22B;
+    --thread:#B23B2E;
+    --line: rgba(28,27,23,0.16);
+    --line-strong: rgba(28,27,23,0.35);
+    --display:'Archivo Black', sans-serif;
+    --sans:'Work Sans', sans-serif;
+    --mono:'Space Mono', monospace;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--canvas);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(rgba(28,27,23,0.05) 1px, transparent 1px);
+    background-size:14px 14px;
+  }
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1140px; margin:0 auto; padding:0 32px;}
+  ::selection{background:var(--ink); color:var(--canvas);}
+  :focus-visible{outline:2px solid var(--cobalt); outline-offset:3px;}
+  h1,h2,h3{font-family:var(--display); font-weight:400; letter-spacing:-0.01em; text-transform:uppercase;}
+  .eyebrow{
+    font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--thread); display:inline-flex; align-items:center; gap:8px; margin-bottom:10px;
+  }
+  .eyebrow::before{content:""; width:16px; height:2px; background:var(--thread);}
+
+  /* stitched divider utility */
+  .stitch{
+    border:none; border-top:2px dashed var(--line-strong); height:0; margin:0;
+  }
+
+  /* ===== HEADER ===== */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(239,231,210,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:2px solid var(--ink);
+  }
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:16px 32px; max-width:1140px; margin:0 auto;}
+  .brand-mark{display:flex; align-items:center; gap:10px; font-family:var(--display); font-size:17px; text-transform:uppercase;}
+  .brand-mark .swatch-dot{width:14px;height:14px; background:var(--thread); border:2px solid var(--ink); border-radius:2px; transform:rotate(8deg);}
+  .est-tag{font-family:var(--mono); font-size:10px; color:var(--ink-soft); border:1px solid var(--line-strong); padding:2px 7px; border-radius:20px; margin-left:6px;}
+  .nav-links{display:flex; gap:28px; font-size:13.5px; font-weight:600;}
+  .nav-links a{position:relative; padding-bottom:3px;}
+  .nav-links a:hover{color:var(--thread);}
+  .nav-cta{display:flex; gap:10px;}
+  .btn{
+    font-family:var(--sans); font-size:13px; font-weight:700;
+    padding:11px 18px; border-radius:3px; border:2px solid var(--ink);
+    display:inline-flex; align-items:center; gap:8px; cursor:pointer;
+    transition:transform .15s ease, background .2s ease;
+  }
+  .btn-solid{background:var(--ink); color:var(--canvas);}
+  .btn-solid:hover{background:var(--thread); border-color:var(--thread); transform:translateY(-2px);}
+  .btn-ghost{background:transparent; color:var(--ink);}
+  .btn-ghost:hover{background:var(--ink); color:var(--canvas); transform:translateY(-2px);}
+  .btn-sm{padding:8px 14px; font-size:12px;}
+  .menu-toggle{display:none; background:none; border:none; font-size:22px; cursor:pointer;}
+
+  /* ===== HERO ===== */
+  .hero{padding:76px 0 90px; position:relative;}
+  .hero-grid{display:grid; grid-template-columns:1.2fr 0.8fr; gap:56px; align-items:start;}
+  .rating-pill{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--card); border:2px solid var(--ink); border-radius:30px;
+    padding:8px 16px 8px 8px; margin-bottom:26px;
+  }
+  .rating-pill .num{
+    background:var(--ink); color:var(--canvas); font-family:var(--display);
+    font-size:14px; padding:5px 10px; border-radius:20px;
+  }
+  .rating-pill .stars{color:var(--mustard); font-size:13px; letter-spacing:1px;}
+  .rating-pill .count{font-size:12.5px; color:var(--ink-soft); font-family:var(--mono);}
+
+  .hero h1{font-size:clamp(38px,5.6vw,64px); line-height:1.04; margin-bottom:20px;}
+  .hero h1 .accent{color:var(--thread);}
+  .hero-sub{font-size:16px; color:var(--ink-soft); max-width:460px; margin-bottom:30px;}
+  .hero-actions{display:flex; gap:12px; flex-wrap:wrap; margin-bottom:36px;}
+  .icon-row{display:flex; gap:10px;}
+  .icon-btn{
+    width:42px; height:42px; border:2px solid var(--ink); border-radius:50%;
+    display:flex; align-items:center; justify-content:center; font-size:15px;
+    transition:transform .15s ease, background .2s ease;
+  }
+  .icon-btn:hover{background:var(--ink); color:var(--canvas); transform:translateY(-2px);}
+
+  /* HANG TAG — signature element */
+  .hang-tag{
+    position:relative;
+    background:var(--card);
+    border:2px solid var(--ink);
+    border-radius:6px;
+    padding:36px 28px 28px;
+    transform:rotate(2.5deg);
+    box-shadow:8px 10px 0 rgba(28,27,23,0.12);
+  }
+  .hang-tag::before{
+    content:""; position:absolute; top:-30px; left:50%; transform:translateX(-50%) rotate(2.5deg);
+    width:2px; height:34px; background:var(--line-strong);
+  }
+  .hang-tag::after{
+    content:""; position:absolute; top:16px; left:50%; transform:translateX(-50%);
+    width:16px; height:16px; border:2px solid var(--ink); border-radius:50%; background:var(--canvas);
+  }
+  .hang-tag .tag-title{
+    font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.12em;
+    color:var(--ink-soft); text-align:center; margin-top:10px; margin-bottom:20px; display:block;
+  }
+  .tag-line{display:flex; justify-content:space-between; gap:14px; padding:11px 0; border-bottom:1px dashed var(--line-strong); font-size:14px;}
+  .tag-line:last-of-type{border-bottom:none;}
+  .tag-line .k{color:var(--ink-soft); font-family:var(--mono); font-size:11.5px; text-transform:uppercase; letter-spacing:.05em;}
+  .tag-line .v{font-weight:600; text-align:right;}
+  .hang-tag .price-corner{
+    position:absolute; top:-10px; right:-10px; background:var(--thread); color:var(--canvas);
+    font-family:var(--mono); font-size:11px; padding:6px 10px; border-radius:20px; border:2px solid var(--ink);
+    transform:rotate(8deg);
+  }
+  .hang-tag .cta-row{display:flex; gap:8px; margin-top:20px;}
+  .hang-tag .cta-row .btn{flex:1; justify-content:center;}
+
+  /* ===== SWATCH STRIP ===== */
+  .swatch-strip{background:var(--ink); padding:26px 0; border-top:2px solid var(--ink); border-bottom:2px solid var(--ink);}
+  .swatch-row{display:flex; gap:16px; overflow-x:auto; padding:0 4px;}
+  .swatch{
+    flex:0 0 auto; width:150px; height:96px; border-radius:4px; position:relative;
+    display:flex; align-items:flex-end; padding:12px; font-family:var(--mono); font-size:11px;
+    color:var(--ink); text-transform:uppercase; letter-spacing:.05em; font-weight:700;
+    border:2px solid var(--ink);
+  }
+  .swatch::after{content:""; position:absolute; top:8px; right:8px; width:8px; height:8px; border-radius:50%; border:2px solid var(--ink); background:var(--canvas);}
+
+  /* ===== SECTIONS ===== */
+  section{padding:80px 0;}
+  .section-head{display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; margin-bottom:44px;}
+  .section-head h2{font-size:clamp(26px,3.2vw,38px);}
+  .section-head p{color:var(--ink-soft); font-size:14.5px; max-width:380px;}
+
+  /* ===== REVIEWS - patch style ===== */
+  .review-strip{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  .patch{
+    background:var(--card); border-radius:8px; padding:26px 22px; position:relative;
+    border:2px dashed var(--line-strong);
+  }
+  .patch .qmark{font-family:var(--display); font-size:34px; color:var(--mustard); line-height:1; margin-bottom:10px; display:block;}
+  .patch p{font-size:14px; color:var(--ink-soft); line-height:1.65;}
+  .patch .src{font-family:var(--mono); font-size:11px; color:var(--ink-soft); margin-top:14px; display:block;}
+
+  .rating-block{display:grid; grid-template-columns:auto 1fr; gap:40px; align-items:center; margin-top:48px; padding-top:44px; border-top:2px dashed var(--line-strong);}
+  .rating-huge{font-family:var(--display); font-size:96px; line-height:.85;}
+  .rating-meta .stars-lg{color:var(--mustard); font-size:20px; letter-spacing:3px; margin-bottom:8px;}
+  .rating-meta p{color:var(--ink-soft); font-size:14px; max-width:340px;}
+
+  /* ===== VISIT INFO ===== */
+  .visit-grid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:1px; background:var(--ink); border:2px solid var(--ink); border-radius:8px; overflow:hidden;}
+  .visit-panel{background:var(--card); padding:30px;}
+  .visit-panel h3{font-family:var(--display); font-size:15px; margin-bottom:16px; text-transform:uppercase;}
+  .visit-panel .addr{font-size:14.5px; color:var(--ink-soft); line-height:1.7; margin-bottom:16px;}
+  .visit-panel .addr strong{display:block; color:var(--ink); font-family:var(--display); font-size:16px; margin-bottom:8px; font-weight:400; text-transform:none;}
+  .status-line{display:flex; align-items:center; gap:8px; font-family:var(--mono); font-size:12.5px; margin-bottom:14px;}
+  .status-line .dot{width:8px;height:8px;border-radius:50%; background:#4E8A4A;}
+  .note{font-size:12.5px; color:var(--ink-soft); border-left:2px solid var(--mustard); padding-left:10px; margin-top:14px;}
+  .chip-list{display:flex; flex-wrap:wrap; gap:8px; margin-top:6px;}
+  .chip{font-size:12px; padding:6px 12px; border:1.5px solid var(--ink); border-radius:20px; font-family:var(--mono);}
+
+  /* ===== INSTAGRAM CTA ===== */
+  .insta-band{
+    background:var(--cobalt); color:var(--canvas); border-radius:10px; padding:44px 40px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:24px;
+    border:2px solid var(--ink);
+  }
+  .insta-band h3{font-size:26px; margin-bottom:8px;}
+  .insta-band p{font-family:var(--mono); font-size:13px; opacity:.85;}
+  .insta-band .btn-solid{background:var(--canvas); color:var(--ink); border-color:var(--canvas);}
+  .insta-band .btn-solid:hover{background:var(--mustard); border-color:var(--mustard); color:var(--ink);}
+
+  /* ===== FOOTER ===== */
+  footer{border-top:2px solid var(--ink); padding:44px 0 30px;}
+  .foot-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; font-size:13px; color:var(--ink-soft);}
+  .foot-row .brand-mark{font-size:14px;}
+
+  @media (max-width:900px){
+    .nav-links, .nav-cta{display:none;}
+    .menu-toggle{display:block;}
+    .hero-grid{grid-template-columns:1fr;}
+    .review-strip{grid-template-columns:1fr;}
+    .visit-grid{grid-template-columns:1fr;}
+    .rating-block{grid-template-columns:1fr; text-align:left;}
+    section{padding:56px 0;}
+    .wrap{padding:0 20px;}
+    .hang-tag{transform:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <div class="brand-mark"><span class="swatch-dot"></span>Balaji Fashion Hub<span class="est-tag">Est. 2024</span></div>
+    <div class="nav-links">
+      <a href="#reviews">Reviews</a>
+      <a href="#visit">Visit</a>
+      <a href="#follow">Follow</a>
+    </div>
+    <div class="nav-cta">
+      <a href="tel:+919573749491" class="btn btn-ghost btn-sm">Call</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Balaji+Fashion+Hub+Ameerpet+Hyderabad" target="_blank" rel="noopener" class="btn btn-solid btn-sm">Directions</a>
+    </div>
+    <button class="menu-toggle" aria-label="Menu">☰</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="rating-pill">
+        <span class="num">4.9</span>
+        <span class="stars">★★★★★</span>
+        <span class="count">(55 Google reviews)</span>
+      </div>
+      <h1>Everyday fashion,<br><span class="accent">honestly priced.</span></h1>
+      <p class="hero-sub">A neighbourhood clothing store on Balkampet Road, Ameerpet — known for a wide range of tees and everyday wear at prices that don't need a sale tag to feel fair.</p>
+      <div class="hero-actions">
+        <a href="tel:+919573749491" class="btn btn-solid">Call 095737 49491</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Balaji+Fashion+Hub+Ameerpet+Hyderabad" target="_blank" rel="noopener" class="btn btn-ghost">Get Directions</a>
+      </div>
+      <div class="icon-row">
+        <a href="#" class="icon-btn" title="Save" aria-label="Save">♡</a>
+        <a href="#" class="icon-btn" title="Share" aria-label="Share">↗</a>
+        <a href="https://www.instagram.com/balaji__fashion__hub/" target="_blank" rel="noopener" class="icon-btn" title="Instagram" aria-label="Instagram">◎</a>
+      </div>
+    </div>
+
+    <div class="hang-tag">
+      <span class="price-corner">Open now</span>
+      <span class="tag-title">Store Details</span>
+      <div class="tag-line"><span class="k">Hours</span><span class="v">Closes 11:30 PM</span></div>
+      <div class="tag-line"><span class="k">Phone</span><span class="v">095737 49491</span></div>
+      <div class="tag-line"><span class="k">Rating</span><span class="v">4.9 · 55 reviews</span></div>
+      <div class="tag-line"><span class="k">Category</span><span class="v">Clothing Store</span></div>
+      <div class="tag-line"><span class="k">Since</span><span class="v">Oct 2024</span></div>
+      <div class="cta-row">
+        <a href="tel:+919573749491" class="btn btn-solid btn-sm">Call</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Balaji+Fashion+Hub+Ameerpet+Hyderabad" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Map</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="swatch-strip">
+  <div class="wrap swatch-row">
+    <div class="swatch" style="background:#C24030; color:#F7F2E4;">T-Shirts</div>
+    <div class="swatch" style="background:#E0A22B;">Casual Wear</div>
+    <div class="swatch" style="background:#2D4373; color:#F7F2E4;">Shirts</div>
+    <div class="swatch" style="background:#7C8F6E; color:#F7F2E4;">Bottoms</div>
+    <div class="swatch" style="background:#C9BFA0;">Everyday Basics</div>
+    <div class="swatch" style="background:#8A5A44; color:#F7F2E4;">Family Wear</div>
+  </div>
+</div>
+
+<section id="reviews">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">On Google</span>
+        <h2>What the neighbourhood says</h2>
+      </div>
+      <p>55 reviews averaging 4.9 — mostly about value and quality of the collection.</p>
+    </div>
+    <div class="review-strip">
+      <div class="patch">
+        <span class="qmark">"</span>
+        <p>A shopper called out the fair pricing and said the staff were genuinely helpful while they browsed.</p>
+        <span class="src">— Google review</span>
+      </div>
+      <div class="patch">
+        <span class="qmark">"</span>
+        <p>Another review pointed to the range on offer, saying the collection quality and finishing stood out.</p>
+        <span class="src">— Google review</span>
+      </div>
+      <div class="patch">
+        <span class="qmark">"</span>
+        <p>A regular customer summed it up simply: good clothes, good prices.</p>
+        <span class="src">— Google review</span>
+      </div>
+    </div>
+
+    <div class="rating-block">
+      <div class="rating-huge">4.9</div>
+      <div class="rating-meta">
+        <div class="stars-lg">★★★★★</div>
+        <p>Built on 55 Google reviews. Early afternoons tend to be the quietest time to browse — worth knowing if you'd rather shop without the rush.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Plan a visit</span>
+        <h2>Find the store</h2>
+      </div>
+    </div>
+    <div class="visit-grid">
+      <div class="visit-panel">
+        <h3>Address</h3>
+        <div class="addr">
+          <strong>Balaji Fashion Hub</strong>
+          7-1-400/7, Balkampet Road,<br>Srinivasa Nagar, Ameerpet,<br>Hyderabad, Telangana – 500016
+        </div>
+        <span class="note">Opposite Vishnu Fire Works, off Balkampet Road.</span>
+      </div>
+      <div class="visit-panel">
+        <h3>Hours</h3>
+        <div class="status-line"><span class="dot"></span>Open now · closes 11:30 PM</div>
+        <p style="font-size:13px; color:var(--ink-soft);">Daily closing time is 11:30 PM — worth a quick call ahead to confirm opening time on the day you plan to visit.</p>
+      </div>
+      <div class="visit-panel">
+        <h3>Contact</h3>
+        <div class="chip-list">
+          <span class="chip">095737 49491</span>
+          <span class="chip">Clothing Store</span>
+          <span class="chip">T-Shirt Retailer</span>
+        </div>
+        <span class="note">Est. October 2024 · Ameerpet, Hyderabad</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="follow">
+  <div class="wrap">
+    <div class="insta-band">
+      <div>
+        <h3>Follow the latest drops</h3>
+        <p>@balaji__fashion__hub · 120+ followers</p>
+      </div>
+      <a href="https://www.instagram.com/balaji__fashion__hub/" target="_blank" rel="noopener" class="btn btn-solid">Follow on Instagram</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-row">
+    <div class="brand-mark"><span class="swatch-dot"></span>Balaji Fashion Hub</div>
+    <span>7-1-400/7, Balkampet Rd, Ameerpet, Hyderabad – 500016 · 095737 49491</span>
+  </div>
+</footer>
+
+</body>
+</html>
